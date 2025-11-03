@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MYBAI | Inicio</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../cssMYBAI/inicio.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-left">
+    <img src="../img/Logo.png" alt="MYBAI Logo" class="header-logo">
+    <div class="brand-text">
+      <div class="brand-name">MYBAI</div>
+      <div class="brand-slogan">Tecnología a tu alcance</div>
+    </div>
+  </div>
+    <nav class="nav-links">
+      <a href="inicio.html">INICIO</a>
+      <a href="catalogo.html">CATÁLOGO</a>
+      <a href="ofertas.html">OFERTAS</a>
+      <a href="contacto.html">CONTACTO</a>
+    </nav>
+
+    <div class="icons-right">
+      <button id="search-btn" class="icon-btn" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <a href="../htmlMYBAI/signin.html" title="Cuenta"><i class="fa-regular fa-user"></i></a>
+      <a href="../htmlMYBAI/carrito.html" title="Carrito"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+  </nav>
+
+  <!-- Barra de búsqueda oculta -->
+  <div class="search-bar" id="search-bar">
+    <input type="text" placeholder="Buscar productos..." id="search-input">
+    <button id="close-search"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+</header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Hardware confiable al mejor precio.</h1>
+        <p>Encuentra laptops, componentes, accesorios y más con la mejor calidad y garantía.</p>
+        <a href="#ofertas" class="btn-primary">Explorar ahora</a>
+      </div>
+      <div class="hero-media">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFERTAS ===== -->
+  <section id="ofertas" class="productos-destacados">
+    <h2>Ofertas destacadas</h2>
+    <div class="productos-grid">
+      <article class="producto">
+        <div class="img-container">
+          <img src="../img/Hpvictus.png" alt="HP Victus">
+        </div>
+        <h3>HP – Victus 16” Gaming Laptop</h3>
+        <p class="price">$2.200.000</p>
+        <button class="btn-secondary">Añadir al carrito</button>
+      </article>
+
+      <article class="producto">
+        <div class="img-container">
+          <img src="../img/laptop2.png" alt="Dell G15">
+        </div>
+        <h3>Dell – G15 15.6” Gaming Laptop</h3>
+        <p class="price">$2.900.000</p>
+        <button class="btn-secondary">Añadir al carrito</button>
+      </article>
+
+      <article class="producto">
+        <div class="img-container">
+          <img src="../img/asusrog.jpeg" alt="ASUS ROG">
+        </div>
+        <h3>ASUS – ROG Gaming Desktop</h3>
+        <p class="price">$3.500.000</p>
+        <a href="../htmlMYBAI/detalle_de_producto.html" class="btn-secondary">Añadir al carrito</a>
+      </article>
+
+      <article class="producto">
+        <div class="img-container">
+          <img src="../img/monitor.png" alt="Acer Nitro">
+        </div>
+        <h3>Acer – Nitro 27” Gaming Monitor</h3>
+        <p class="price">$1.800.000</p>
+        <button class="btn-secondary">Añadir al carrito</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section id="contacto" class="contacto">
+    <div class="contact-card">
+      <h2>Contacto</h2>
+      <p>¿Tienes alguna pregunta? Ponte en contacto con nosotros.</p>
+      <form class="contact-form" action="#" method="post">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="email" name="correo" placeholder="Correo electrónico" required>
+        <textarea name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí"></textarea>
+        <button type="submit" class="btn-primary">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../img/Logo.png" alt="MYBAI" class="footer-logo">
+        <p>Tecnología a tu alcance</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="soporte.html">Soporte Técnico</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-news">
+        <h4>Mantente informado</h4>
+        <p>Síguenos en nuestras redes para más novedades.</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 MYBAI. Todos los derechos reservados.</div>
+  </footer>
+<script>
+  const searchBtn = document.getElementById('search-btn');
+  const searchBar = document.getElementById('search-bar');
+  const closeBtn = document.getElementById('close-search');
+
+  searchBtn.addEventListener('click', () => {
+    searchBar.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    searchBar.classList.remove('active');
+  });
+</script>
+
+</body>
+</html>

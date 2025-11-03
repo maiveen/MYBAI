@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #0B2C5F;
+  color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ---------- Tarjeta principal ---------- */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+/* ---------- Columna izquierda ---------- */
+.left {
+  background-color: #0B2C5F;
+  color: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.slogan {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* ---------- Columna derecha ---------- */
+.right {
+  flex: 1.2;
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right h2 {
+  color: #0B2C5F;
+  margin-bottom: 10px;
+}
+
+.subtext {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input {
+  padding: 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #0B2C5F;
+  outline: none;
+}
+
+button {
+  background-color: #0B2C5F;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #0a2450;
+}
+
+.login-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.login-text a {
+  color: #0B2C5F;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsividad ---------- */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    max-width: 450px;
+  }
+
+  .left {
+    padding: 30px 20px;
+  }
+
+  .right {
+    padding: 25px 20px;
+  }
+
+  input, button {
+    font-size: 0.95rem;
+  }
+
+  .slogan {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 90px;
+  }
+
+  .card {
+    border-radius: 15px;
+  }
+
+  .right h2 {
+    font-size: 1.3rem;
+  }
+}

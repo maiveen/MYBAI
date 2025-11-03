@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYBAI - Finalizar compra</title>
+  <link rel="stylesheet" href="../cssMYBAI/finalizar_compra.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+
+  <!-- ===== HEADER ===== -->
+<header class="site-head">
+
+  <nav class="header-right">
+    <ul class="main-nav">
+      <li><a href="inicio.html">INICIO</a></li>
+      <li><a href="../htmlMYBAI/catalogo.html" class="active">CATÁLOGO</a></li>
+      <li><a href="#ofertas">OFERTAS</a></li>
+      <li><a href="#contacto">CONTACTO</a></li>
+    </ul>
+
+    <div class="icons-right">
+      <a href="../htmlMYBAI/signin.html" title="Cuenta"><i class="fa-regular fa-user"></i></a>
+      <a href="../htmlMYBAI/carrito.html" title="Carrito"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+  </nav>
+
+
+
+  <!-- ===== PASO 1: DETALLES DE FACTURACIÓN ===== -->
+  <section class="facturacion">
+    <h2>Detalles de facturación</h2>
+    <div class="container">
+      <form>
+        <div class="row">
+          <div class="col">
+            <label>Nombre <span>*</span></label>
+            <input type="text">
+          </div>
+          <div class="col">
+            <label>Apellidos <span>*</span></label>
+            <input type="text">
+          </div>
+        </div>
+
+        <label>Nombre de la empresa (opcional)</label>
+        <input type="text">
+
+        <label>País / Región <span>*</span></label>
+        <select>
+          <option>Seleccione un país...</option>
+          <option>Colombia</option>
+          <option>México</option>
+          <option>Chile</option>
+          <option>Argentina</option>
+        </select>
+
+        <label>Dirección de la calle <span>*</span></label>
+        <input type="text" placeholder="Número de la casa y nombre de la calle">
+        <input type="text" placeholder="Apartamento, piso, etc">
+
+        <label>Localidad / Ciudad <span>*</span></label>
+        <select>
+          <option>Seleccione una ciudad...</option>
+          <option>Bogotá</option>
+          <option>Medellín</option>
+          <option>Cali</option>
+          <option>Barranquilla</option>
+        </select>
+
+        <label>Región / Provincia <span>*</span></label>
+        <select>
+          <option>Seleccione una región...</option>
+          <option>Cundinamarca</option>
+          <option>Antioquia</option>
+          <option>Valle del Cauca</option>
+        </select>
+
+        <label>Código postal <span>*</span></label>
+        <input type="text">
+
+        <label>Teléfono <span>*</span></label>
+        <input type="tel">
+
+        <label>Correo electrónico <span>*</span></label>
+        <input type="email">
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== PASO 2: CONFIRMACIÓN DE PEDIDO ===== -->
+  <section class="pedido">
+    <div class="container">
+      <h2>Tu pedido</h2>
+
+      <table>
+        <tr>
+          <th>Producto</th>
+          <th class="subtotal">Subtotal</th>
+        </tr>
+        <tr>
+          <td>ASUS ROG Gaming Desktop × 1</td>
+          <td class="subtotal">$3.350.000 COP (incl. IVA)</td>
+        </tr>
+      </table>
+
+      <hr>
+
+      <table>
+        <tr>
+          <td><strong>Subtotal</strong></td>
+          <td class="subtotal">$3.350.000 COP</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#00a000;">TOTAL</strong></td>
+          <td class="total">$3.350.000 COP (IVA incl.)</td>
+        </tr>
+      </table>
+
+      <div class="payment-option">
+        <label><input type="radio" name="payment" checked> Transferencia bancaria directa</label>
+        <p class="payment-description">
+          Realiza tu pago directamente en nuestra cuenta bancaria. Usa el número de pedido como referencia. Tu pedido se procesará al confirmar el pago.
+        </p>
+      </div>
+
+      <div class="payment-option contra">
+        <label><input type="radio" name="payment"> Contra entrega</label>
+      </div>
+
+      <hr>
+
+      <p class="privacy-text">
+        Tus datos personales se utilizarán para procesar tu pedido y mejorar tu experiencia. Consulta nuestra 
+        <a href="#">política de privacidad</a>.
+      </p>
+
+      <div class="checkbox">
+        <input type="checkbox">
+        <label>He leído y acepto los <span>términos y condiciones</span> y confirmo ser mayor de 18 años<span class="required">*</span></label>
+      </div>
+
+      <button class="btn-order">Realizar pedido</button>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>© 2025 MYBAI. Todos los derechos reservados.</footer>
+
+</body>
+</html>
