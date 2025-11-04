@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo de productos - MYBAI</title>
+<link rel="stylesheet" href="../cssMYBAI/catalogo.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+  <!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-left">
+    <img src="../img/Logo.png" alt="MYBAI Logo" class="header-logo">
+    <div class="brand-text">
+      <div class="brand-name">MYBAI</div>
+      <div class="brand-slogan">Tecnología a tu alcance</div>
+    </div>
+  </div>
+
+  <nav class="header-right">
+    <ul class="main-nav">
+      <li><a href="inicio.html">INICIO</a></li>
+      <li><a href="#" class="active">CATÁLOGO</a></li>
+      <li><a href="#ofertas">OFERTAS</a></li>
+      <li><a href="#contacto">CONTACTO</a></li>
+    </ul>
+
+    <div class="icons-right">
+      <button id="search-btn" class="icon-btn" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <a href="../htmlMYBAI/signin.html" title="Cuenta"><i class="fa-regular fa-user"></i></a>
+      <a href="../htmlMYBAI/carrito.html" title="Carrito"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+  </nav>
+
+  <!-- Barra de búsqueda oculta -->
+  <div class="search-bar" id="search-bar">
+    <input type="text" placeholder="Buscar productos..." id="search-input">
+    <button id="close-search"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+</header>
+
+</div>
+
+    </header>
+
+    <section class="hero">
+      <h1>Catálogo de productos</h1>
+      <p>Descubre nuestra selección de computadoras y accesorios.</p>
+    </section>
+
+    <div class="controls">
+      <select class="select"><option>Categoría ▾</option></select>
+      <select class="select"><option>Marca ▾</option></select>
+      <select class="select"><option>Precio ▾</option></select>
+      <div class="sort">Ordenar por: <select class="select"><option>Categoría</option></select></div>
+    </div>
+
+    <div class="main">
+      <aside class="sidebar">
+        <div class="sticky">
+          <div class="card-filter">
+            <div class="filter-title">Categorías</div>
+            <div class="filters">
+              <label><input type="radio" name="cat"> Portátiles (24)</label>
+              <label><input type="radio" name="cat"> Escritorio (18)</label>
+              <label><input type="radio" name="cat"> Monitores (15)</label>
+              <label><input type="radio" name="cat"> Accesorios (42)</label>
+            </div>
+          </div>
+          <div class="card-filter">
+            <div class="filter-title">Marca</div>
+            <div class="filters">
+              <label><input type="checkbox"> Dell (12)</label>
+              <label><input type="checkbox"> HP (15)</label>
+              <label><input type="checkbox"> Lenovo (10)</label>
+              <label><input type="checkbox"> Asus (8)</label>
+              <label><input type="checkbox"> Acer (7)</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="catalog">
+        <div class="products-grid">
+          <!-- fila 1 -->
+          <article class="product">
+            <div class="img-wrap"><img src="../img/hpvictus.png.jpeg" alt="hp"></div>
+            <div class="p-title">HP - Victus 16.1" Gaming Laptop</div>
+            <div class="p-sub">Potente y elegante para gamers exigentes.</div>
+            <div class="product-footer">
+              <div class="p-price">$2.200.000</div>
+              <button class="btn">Añadir al carrito</button>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="img-wrap"><img src="../img/dell.png.jpeg" alt="dell"></div>
+            <div class="p-title">Dell - G15 15.6" Gaming Laptop</div>
+            <div class="p-sub">Diseño moderno y rendimiento estable.</div>
+            <div class="product-footer">
+              <div class="p-price">$1.800.000</div>
+              <button class="btn">Añadir al carrito</button>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="img-wrap"><img src="../img/asus.png" alt="asus"></div>
+            <div class="p-title">ASUS - ROG Gaming Desktop</div>
+            <div class="p-sub">Potencia máxima para gaming competitivo.</div>
+            <div class="product-footer">
+              <div class="p-price">$3.250.000</div>
+              <button class="btn">Añadir al carrito</button>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="img-wrap"><img src="../img/acer.png.jpeg" alt="acer"></div>
+            <div class="p-title">Acer - Nitro 27" Gaming Monitor</div>
+            <div class="p-sub">Pantalla fluida de alta frecuencia.</div>
+            <div class="product-footer">
+              <div class="p-price">$900.000</div>
+              <button class="btn">Añadir al carrito</button>
+            </div>
+          </article>
+
+          <!-- fila 2 -->
+          <article class="product">
+            <div class="img-wrap"><img src="../img/cer2.png.png" alt="acer16"></div>
+            <div class="p-title">Acer 16.1" Gaming Laptop</div>
+            <div class="p-sub">Equilibrio entre potencia y portabilidad.</div>
+            <div class="product-footer">
+              <div class="p-price">$2.860.000</div>
+              <button class="btn">Añadir al carrito</button>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="img-wrap"><img src="../img/asus2.png" alt="asus15"></div>
+            <div class="p-title">Asus - 15.6" Gaming Laptop</div>
+            <div class="p-sub">Diseño liviano con gran rendimiento.</div>
+            <div class="product-footer">
+              <div class="p-price">$3.500.000</div>
+              <button class="btn">Añadir al carrito</button>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="img-wrap"><img src="../img/aceernitro.png" alt="acer-nitro50"></div>
+            <div class="p-title">Acer Nitro 50 Gaming Desktop</div>
+            <div class="p-sub">Potencia confiable para gaming intenso.</div>
+            <div class="product-footer">
+              <div class="p-price">$4.000.000</div>
+              <button class="btn">Añadir al carrito</button>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="img-wrap"><img src="../img/samsung.png" alt="odyssey"></div>
+            <div class="p-title">Odyssey Neo G8 27" Monitor</div>
+            <div class="p-sub">Calidad visual y curvatura inmersiva.</div>
+            <div class="product-footer">
+              <div class="p-price">$730.000</div>
+              <button class="btn">Añadir al carrito</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="pagination">
+          <button class="page">&lt;</button>
+          <button class="page active">1</button>
+          <button class="page">2</button>
+          <button class="page">3</button>
+          <button class="page">&gt;</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div>
+        <h3>MYBAI</h3>
+        <p>Tecnología a tu alcance</p>
+      </div>
+      <div>
+        <h3>Enlaces rápidos</h3>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Catálogo</a></li>
+          <li><a href="#">Ofertas</a></li>
+          <li><a href="#">Soporte técnico</a></li>
+          <li><a href="#">Sobre nosotros</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Mantente informado</h3>
+        <p>Síguenos en nuestras redes para recibir ofertas y novedades</p>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 MYBAI. Todos los derechos reservados.
+    </div>
+  </footer>
+  <script>
+  const searchBtn = document.getElementById('search-btn');
+  const searchBar = document.getElementById('search-bar');
+  const closeBtn = document.getElementById('close-search');
+
+  searchBtn.addEventListener('click', () => {
+    searchBar.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    searchBar.classList.remove('active');
+  });
+</script>
+
+</body>
+</html>
+
