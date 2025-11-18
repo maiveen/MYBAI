@@ -1,0 +1,256 @@
+/* ======== RESET GENERAL ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  background-color: #0a1a2f;
+  line-height: 1.6;
+}
+
+/* Header moved to global.css */
+
+/* ======== HERO ======== */
+/* ======== HERO ======== */
+.hero {
+  background: linear-gradient(rgba(10,26,47,0.85), rgba(10,26,47,0.9)),
+    url("../img/hero-bg.jpeg") center/cover no-repeat;
+  min-height: 40vh; /* menos alto para evitar exceso de espacio */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem; /* más espacio interno controlado */
+  gap: 0.6rem;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem; /* menos espacio */
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #dce7f5;
+  margin-bottom: 0; /* ya no tan pegado al h1 */
+}
+
+
+/* ======== CONTROLES ======== */
+.controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: #08162b;
+  padding: 1rem 2rem;
+  margin-top: 8rem; /* espacio debajo del header fijo */
+}
+
+.select {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: #132b4d;
+  color: #ffffff;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ======== CATÁLOGO ======== */
+.catalog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem 3%;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.product {
+  background: #ffffff;
+  color: #0a1a2f;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+}
+
+.img-wrap {
+  width: 100%;
+  /* usar ratio consistente para todas las tarjetas (evita alturas variables) */
+  aspect-ratio: 4 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f7fa;
+  overflow: hidden;
+  padding: 0.6rem;
+}
+
+.img-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* no recortar, mostrar completa la imagen */
+  display: block;
+}
+
+/* Ajustes de texto y altura para tarjetas */
+.product { min-height: 360px; }
+.p-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0.8rem 1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.p-sub {
+  margin: 0 1rem 0.8rem;
+  color: #4d5a6b;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+.product-footer { margin-top: auto; }
+
+
+.p-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+.p-sub {
+  font-size: 0.9rem;
+  color: #4d5a6b;
+  margin: 0 1rem 1rem;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid #e5e9f0;
+}
+
+.p-price {
+  font-weight: 700;
+  color: #0052cc;
+}
+
+.btn {
+  background: #00b8ff;
+  color: #0a1a2f;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: #007acc;
+  color: #fff;
+}
+
+/* ======== PAGINACIÓN ======== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 0.5rem;
+}
+
+.page {
+  background: #132b4d;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.page:hover,
+.page.active {
+  background: #00b8ff;
+  color: #0a1a2f;
+}
+
+/* Footer styles are centralized in global.css to avoid duplication. */
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .main-nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/* ===== Estilos para las alertas SweetAlert2 personalizadas ===== */
+.swal-popup-custom {
+  border-radius: 20px !important;
+  box-shadow: 0 0 20px rgba(0, 200, 83, 0.3);
+  background-color: #fefefe !important;
+  color: #333 !important;
+}
+
+.swal-title-custom {
+  font-weight: 700 !important;
+  font-family: 'Poppins', sans-serif;
+  color: #00c853 !important;
+  font-size: 1.5rem !important;
+}
+
+.swal-confirm-custom {
+  font-weight: 600 !important;
+  border-radius: 30px !important;
+  padding: 10px 25px !important;
+  background-color: #00c853 !important;
+  border: none !important;
+}
+
+.swal-cancel-custom {
+  font-weight: 500 !important;
+  border-radius: 30px !important;
+  padding: 10px 25px !important;
+  background-color: #ccc !important;
+  color: #000 !important;
+}

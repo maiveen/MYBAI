@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ producto.nombre }} | MYBAI</title>
+  <link rel="stylesheet" href="{% static 'cssMYBAI/global.css' %}">
+  <link rel="stylesheet" href="{% static 'cssMYBAI/detalle_de_producto.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  {% include 'store/header.html' %}
+
+
+
+  <!-- DETALLE PRINCIPAL -->
+  <main class="product">
+    <div class="product-container">
+      
+      <!-- IMAGENES -->
+      <div class="product-images">
+        <img id="main-img" src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+        <div class="image-gallery">
+          <img src="{{ producto.imagen.url }}" alt="Imagen 1" onclick="changeImage(this)">
+          {% comment %} Puedes añadir más imágenes si las tienes {% endcomment %}
+        </div>
+      </div>
+
+      <!-- INFORMACIÓN -->
+      <div class="product-info">
+        <h1>{{ producto.nombre }}</h1>
+
+        <div class="rating">⭐⭐⭐⭐⭐ (32 valoraciones)</div>
+
+        <div class="price">${{ producto.precio|floatformat:0 }}</div>
+
+        <!-- STOCK DINÁMICO -->
+        <p class="stock">
+          <span style="color: #00ff00;">●</span>
+          {% if producto.stock > 0 %}
+            En stock ({{ producto.stock }} unidades)
+          {% else %}
+            Agotado
+          {% endif %}
+        </p>
+
+        <!-- INCLUYE / ESPECIFICACIONES -->
+        <div class="included">
+          <strong>¿Qué incluye?</strong>
+          <p>{{ producto.descripcion }}</p>
+        </div>
+
+        {% if producto.especificaciones %}
+        <div class="specifications">
+          <strong>Especificaciones:</strong>
+          <p>{{ producto.especificaciones|linebreaksbr }}</p>
+        </div>
+        {% endif %}
+
+        <!-- ACCIONES -->
+        <div class="product-actions">
+          <div class="quantity">
+            <button type="button" id="qty-decrement" class="qty-decrement-btn">-</button>
+            <input type="number" id="qty" value="1" min="1" max="{{ producto.stock }}">
+            <button type="button" id="qty-increment" class="qty-increment-btn">+</button>
+          </div>
+
+          {% if user.is_authenticated %}
+          <form class="add-to-cart-form" action="{% url 'agregar_al_carrito' producto.id %}" method="post" data-product-id="{{ producto.id }}" data-product-name="{{ producto.nombre }}">
+            {% csrf_token %}
+            <input type="hidden" name="cantidad" id="form-cantidad" value="1">
+            <button type="submit" class="add-cart" {% if producto.stock == 0 %}disabled{% endif %}>
+              Añadir al carrito
+            </button>
+          </form>
+          {% else %}
+            <a href="{% url 'signin' %}?next={% url 'detalle_producto' producto.id %}" class="add-cart requires-login" data-next="{% url 'detalle_producto' producto.id %}">Iniciar sesión para comprar</a>
+          {% endif %}
+        </div>
+
+        <p class="sku">SKU: {{ producto.id }}</p>
+        <p class="garantia"><strong>Garantía:</strong> 2 años</p>
+        <p class="envio"><strong>Envío:</strong> Gratis (1-3 días laborables)</p>
+
+      </div>
+    </div>
+  </main>
+
+  {% include 'store/footer.html' %}
+
+  <!-- SCRIPT PARA GALERÍA Y SINCRONIZACIÓN DE CANTIDAD -->
+  <script>
+    function changeImage(el) {
+      document.getElementById('main-img').src = el.src;
+    }
+
+    // Al cargar la página, sincronizar el input hidden del formulario con el #qty visible
+    document.addEventListener('DOMContentLoaded', function(){
+      try {
+        const qty = document.querySelector('#qty');
+        const hidden = document.querySelector('input[name="cantidad"]#form-cantidad');
+        if (qty && hidden) hidden.value = qty.value || '1';
+
+        // Mostrar alerta si el usuario intenta pulsar un botón deshabilitado (sin stock)
+        document.addEventListener('click', function(e){
+          const btn = e.target.closest('.add-cart');
+          if (!btn) return;
+          if (btn.disabled) {
+            e.preventDefault();
+            if (window.Swal) {
+              Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'warning',
+                title: 'Producto sin stock',
+                showConfirmButton: false,
+                timer: 2200
+              });
+            } else {
+              alert('Producto sin stock');
+            }
+          }
+        });
+      } catch (e) {
+        console.error('Error inicializando detalle de producto:', e);
+      }
+    });
+  </script>
+  <script>
+    // Debug helper: confirmar que el form de añadir al carrito existe y el JS de carrito está activo
+    (function(){
+      try {
+        const form = document.querySelector('.add-to-cart-form');
+        console.debug('[detalle_producto] add-to-cart-form found:', !!form);
+        if (form) {
+          form.addEventListener('submit', function(){
+            console.debug('[detalle_producto] form submit fired');
+          });
+        } else {
+          const link = document.querySelector('.add-cart.requires-login');
+          console.debug('[detalle_producto] requires-login link present:', !!link);
+        }
+      } catch (e) { console.error(e); }
+    })();
+  </script>
+</body>
+</html>

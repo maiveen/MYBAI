@@ -1,0 +1,47 @@
+{% load static %}
+
+<header class="site-header">
+  <div class="header-left">
+    <a href="{% url 'inicio' %}"><img src="{% static 'img/Logo.png' %}" alt="MYBAI Logo" class="header-logo"></a>
+    <div class="brand-text">
+      <div class="brand-name">MYBAI</div>
+      <div class="brand-slogan">Tecnología a tu alcance</div>
+    </div>
+  </div>
+
+  <ul class="nav-links main-nav">
+    <li><a href="{% url 'inicio' %}">INICIO</a></li>
+    <li><a href="{% url 'catalogo' %}">CATÁLOGO</a></li>
+    <li><a href="{% url 'inicio' %}#ofertas">OFERTAS</a></li>
+    <li><a href="{% url 'soporte' %}">SOPORTE</a></li>
+  </ul>
+
+  <div class="nav-icons nav-icons-right">
+    <button id="search-btn" class="icon-btn" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+    {% if user.is_authenticated %}
+      <div class="account-dropdown">
+        <button class="account-toggle" aria-expanded="false" aria-haspopup="true">
+          <span class="account-avatar">{{ user.username|slice:":2"|upper }}</span>
+          <i class="fa-solid fa-chevron-down account-caret"></i>
+        </button>
+        <div class="account-menu" role="menu" aria-hidden="true">
+          <a href="{% url 'ver_pedidos' %}" class="account-menu-item">Ver pedidos</a>
+          <a href="{% url 'signout' %}" class="account-menu-item">Cerrar sesión</a>
+        </div>
+      </div>
+    {% else %}
+      <a href="{% url 'signin' %}" title="Iniciar sesión" class="icon-link"><i class="fa-regular fa-user"></i></a>
+    {% endif %}
+
+    <a href="{% url 'carrito' %}" title="Carrito" class="cart-link">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="cart-badge"></span>
+    </a>
+  </div>
+
+  <div class="search-bar" id="search-bar">
+    <input type="text" placeholder="Buscar productos..." id="search-input">
+    <button id="close-search"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+</header>

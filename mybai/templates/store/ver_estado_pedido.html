@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Estado del pedido #{{ pedido.id }} - MYBAI</title>
+  <link rel="stylesheet" href="{% static 'cssMYBAI/global.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'cssMYBAI/pedidos.css' %}">
+  <style>
+    .progress { display:flex; gap:10px; align-items:center; margin:20px 0; }
+    .step { flex:1; padding:10px; border-radius:8px; text-align:center; background:#eee; color:#444; }
+    .step.active { background:#00b4d8; color:white; font-weight:700; }
+  </style>
+</head>
+<body>
+  
+  {% include 'store/header.html' %}
+
+  <main class="container">
+    <div class="title-box">
+      <h1>Pedido #{{ pedido.id }}</h1>
+      <p>Creado: {{ pedido.fecha_creacion|date:"d M Y H:i" }}</p>
+      <p>Dirección: {{ pedido.direccion_envio }}</p>
+      <p>Código de rastreo: {{ pedido.codigo_rastreo }}</p>
+    </div>
+
+    <div>
+      <h3>Progreso del envío</h3>
+      <div class="progress">
+        <div class="step {% if pedido.estado == 'pendiente' %}active{% endif %}">Pendiente</div>
+        <div class="step {% if pedido.estado == 'en_proceso' %}active{% endif %}">En proceso</div>
+        <div class="step {% if pedido.estado == 'en_camino' %}active{% endif %}">En camino</div>
+        <div class="step {% if pedido.estado == 'entregado' %}active{% endif %}">Entregado</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;">
+      <a href="{% url 'ver_pedidos' %}" class="btn">Volver a pedidos</a>
+    </div>
+  </main>
+
+  {% include 'store/footer.html' %}
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear cuenta - MYBAI</title>
+  <link rel="stylesheet" href="{% static 'cssMYBAI/index.css' %}">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="left">
+        <img src="{% static 'img/Logo.png' %}" alt="Logo MYBAI" class="logo">
+        <p class="slogan">Tecnología a tu alcance</p>
+      </div>
+
+      <div class="right">
+        <h2>CREAR CUENTA</h2>
+        <p class="subtext">Tu tecnología, más cerca que nunca.</p>
+        <form method="POST" action="{% url 'register' %}">
+          {% csrf_token %}
+          <input type="email" name="email" placeholder="Correo electrónico" required>
+          <input type="password" name="password" placeholder="Contraseña" required>
+          <input type="password" name="confirm_password" placeholder="Confirmar contraseña" required>
+          <button type="submit">Registrarse</button>
+        </form>
+        <p class="login-text">
+          ¿Ya tienes cuenta? <a href="{% url 'signin' %}">Inicia sesión aquí</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

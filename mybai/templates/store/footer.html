@@ -1,0 +1,169 @@
+{% load static %}
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <img src="{% static 'img/Logo.png' %}" alt="MYBAI" class="footer-logo-img">
+      <div class="footer-brand">
+        <span class="footer-brand-name visually-hidden">MYBAI</span>
+        <span class="footer-slogan">Tecnología a tu alcance</span>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Enlaces rápidos</h4>
+      <ul>
+        <li><a href="{% url 'inicio' %}">Inicio</a></li>
+        <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+        <li><a href="#">Ofertas</a></li>
+        <li><a href="#">Soporte técnico</a></li>
+        <li><a href="#">Sobre nosotros</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-news">
+      <h4>Síguenos</h4>
+      <p>Entérate de nuestras últimas ofertas y novedades</p>
+      <div class="socials">
+        <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">© 2025 MYBAI. Todos los derechos reservados.</div>
+</footer>
+
+<!-- Cargar SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Cargar AJAX para carrito -->
+<script src="{% static 'js/carrito-ajax.js' %}"></script>
+
+<!-- Interceptar links que requieran login -->
+<script>
+  const userIsAuthenticated = "{{ user.is_authenticated }}".toLowerCase() === "true";
+
+  document.addEventListener('click', function(e) {
+    const target = e.target.closest('.requires-login');
+    if (!target) return;
+
+    if (!userIsAuthenticated) {
+      e.preventDefault();
+      const next = target.dataset.next || window.location.pathname;
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Inicia sesión para continuar',
+        showConfirmButton: true,
+        confirmButtonText: 'Iniciar sesión',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar'
+      }).then(result => {
+        if (result.isConfirmed) {
+          window.location.href = "{% url 'signin' %}?next=" + encodeURIComponent(next);
+        }
+      });
+    }
+  });
+</script>
+
+<!-- Mostrar mensajes de Django usando SweetAlert2 -->
+{% if messages %}
+  <script id="django-messages" type="application/json">
+    [
+    {% for message in messages %}
+      {"message": "{{ message|escapejs }}", "level": "{{ message.tags }}"}{% if not forloop.last %},{% endif %}
+    {% endfor %}
+    ]
+  </script>
+
+  <script>
+    (function() {
+      try {
+        const el = document.getElementById('django-messages');
+        if (!el) return;
+        const items = JSON.parse(el.textContent || '[]');
+        items.forEach(it => {
+          const icon = (it.level || '').includes('error') ? 'error' : (it.level || '').includes('warning') ? 'warning' : 'success';
+          Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: icon,
+            title: it.message,
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          });
+        });
+      } catch (e) {
+        console.error('Error mostrando mensajes:', e);
+      }
+    })();
+  </script>
+{% endif %}
+
+<script>
+  // Bienvenida breve una sola vez por sesión
+  document.addEventListener('DOMContentLoaded', function() {
+    try {
+      const userIsAuthenticated = "{{ user.is_authenticated }}".toLowerCase() === "true";
+      const username = "{{ user.username|escapejs }}";
+      if (userIsAuthenticated && !sessionStorage.getItem('seenWelcome')) {
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'info',
+          title: `Bienvenido, ${username}`,
+          showConfirmButton: false,
+          timer: 2200,
+          timerProgressBar: true
+        });
+        sessionStorage.setItem('seenWelcome', '1');
+      }
+    } catch (e) {
+      // no bloquear si falla
+    }
+  });
+</script>
+
+<!-- Account dropdown toggle (shared) -->
+<script>
+  (function(){
+    try {
+      document.addEventListener('click', function(e){
+        const toggle = e.target.closest('.account-toggle');
+        const dropdowns = document.querySelectorAll('.account-dropdown');
+
+        if (toggle) {
+          const container = toggle.closest('.account-dropdown');
+          const menu = container.querySelector('.account-menu');
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          // toggle state
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('show');
+          menu.setAttribute('aria-hidden', String(expanded));
+          // close others
+          dropdowns.forEach(d => {
+            if (d !== container) {
+              const m = d.querySelector('.account-menu');
+              const t = d.querySelector('.account-toggle');
+              if (m) m.classList.remove('show');
+              if (t) t.setAttribute('aria-expanded','false');
+            }
+          });
+          return;
+        }
+
+        // click outside: close all
+        if (!e.target.closest('.account-dropdown')) {
+          document.querySelectorAll('.account-menu').forEach(m => m.classList.remove('show'));
+          document.querySelectorAll('.account-toggle').forEach(t => t.setAttribute('aria-expanded','false'));
+        }
+      });
+    } catch (e) {
+      // no bloquear
+    }
+  })();
+</script>

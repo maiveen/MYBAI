@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Mis pedidos - MYBAI</title>
+  <link rel="stylesheet" href="{% static 'cssMYBAI/global.css' %}">
+  <link rel="stylesheet" href="{% static 'cssMYBAI/pedidos.css' %}">
+</head>
+<body>
+  {% include 'store/header.html' %}
+
+  <main class="container">
+    <div class="title-box">
+      <h1>Mis pedidos</h1>
+      <p>Consulta el historial y el estado de tus compras.</p>
+    </div>
+
+    <div class="order-list">
+      {% for pedido in pedidos %}
+      <div class="order-card">
+        <div class="order-details">
+          <h4>Pedido #{{ pedido.id }}</h4>
+          <p>Fecha: {{ pedido.fecha_creacion|date:"d M Y H:i" }}</p>
+          <p>Total: ${{ pedido.total }}</p>
+          <p>Estado: <span class="status-badge {{ pedido.estado }}">{{ pedido.get_estado_display }}</span></p>
+        </div>
+        <div class="order-actions">
+          <a href="{% url 'estado_pedido' pedido.id %}" class="btn">Ver estado</a>
+        </div>
+      </div>
+      {% empty %}
+      <p>No tienes pedidos aún.</p>
+      {% endfor %}
+    </div>
+  </main>
+
+  {% include 'store/footer.html' %}
+
+</body>
+</html>

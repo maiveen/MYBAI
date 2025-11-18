@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MYBAI | Inicio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'cssMYBAI/global.css' %}" />
+  <link rel="stylesheet" href="{% static 'cssMYBAI/inicio.css' %}" />
+</head>
+<body>
+
+  {% include 'store/header.html' %}
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Hardware confiable al mejor precio.</h1>
+        <p>Encuentra laptops, componentes, accesorios y más con la mejor calidad y garantía.</p>
+        <a href="{% url 'catalogo' %}" class="btn-primary">Explorar ahora</a>
+      </div>
+      <div class="hero-media">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFERTAS ===== -->
+  <section id="ofertas" class="productos-destacados">
+    <h2>Ofertas destacadas</h2>
+    <div class="productos-grid">
+      {% for producto in productos_destacados %}
+      <article class="producto">
+        <div class="img-container">
+          <a href="{% url 'detalle_producto' producto.id %}">
+            {% if producto.imagen %}
+              <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" loading="lazy" onerror='this.onerror=null;this.src="{% static "img/computadora.png" %}";'>
+            {% else %}
+              <img src="{% static 'img/computadora.png' %}" alt="Producto sin imagen" loading="lazy">
+            {% endif %}
+          </a>
+        </div>
+        <h3>{{ producto.nombre }}</h3>
+        <p class="price">${{ producto.precio|floatformat:0 }}</p>
+
+        {% if user.is_authenticated %}
+        <form class="add-to-cart-form" action="{% url 'agregar_al_carrito' producto.id %}" method="post" data-product-id="{{ producto.id }}" data-product-name="{{ producto.nombre }}">
+          {% csrf_token %}
+          <input type="hidden" name="cantidad" value="1">
+          <button type="submit" class="btn-secondary">Añadir al carrito</button>
+        </form>
+        {% else %}
+        <a href="{% url 'signin' %}?next={% url 'inicio' %}" class="btn-secondary requires-login" data-next="{% url 'inicio' %}">Iniciar sesión para comprar</a>
+        {% endif %}
+
+      </article>
+      {% empty %}
+      <p>No hay productos destacados disponibles.</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section id="contacto" class="contacto">
+    <div class="contact-card">
+      <h2>Contacto</h2>
+      <p>¿Tienes alguna pregunta? Ponte en contacto con nosotros.</p>
+      <form class="contact-form" action="#" method="post">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="email" name="correo" placeholder="Correo electrónico" required>
+        <textarea name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí"></textarea>
+        <button type="submit" class="btn-primary">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  {% include 'store/footer.html' %}
+
+  <script>
+    const searchBtn = document.getElementById('search-btn');
+    const searchBar = document.getElementById('search-bar');
+    const closeBtn = document.getElementById('close-search');
+
+    searchBtn.addEventListener('click', () => {
+      searchBar.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      searchBar.classList.remove('active');
+    });
+  </script>
+
+  <!-- messages handled by shared footer -->
+
+  
+
+ 
+</body>
+</html>

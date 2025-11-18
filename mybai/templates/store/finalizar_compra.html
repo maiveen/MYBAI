@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finalizar compra - MYBAI</title>
+  <link rel="stylesheet" href="{% static 'cssMYBAI/global.css' %}">
+  <link rel="stylesheet" href="{% static 'cssMYBAI/finalizar_compra.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  {% include 'store/header.html' %}
+
+  <!-- ===== PASO 1: DETALLES DE FACTURACIÓN ===== -->
+  <section class="facturacion">
+    <h2>Detalles de facturación</h2>
+    <div class="container">
+      <form method="POST" action="{% url 'checkout' %}">
+        {% csrf_token %}
+        
+        <div class="row">
+          <div class="col">
+            <label>Nombre <span>*</span></label>
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="col">
+            <label>Apellidos <span>*</span></label>
+            <input type="text" name="apellidos" placeholder="Tus apellidos" required>
+          </div>
+        </div>
+
+        <label>Nombre de la empresa (opcional)</label>
+        <input type="text" name="empresa" placeholder="Opcional">
+
+        <label>País / Región <span>*</span></label>
+        <select name="pais" required>
+          <option value="">Seleccione un país...</option>
+          <option value="Colombia">Colombia</option>
+          <option value="México">México</option>
+          <option value="Chile">Chile</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Peru">Perú</option>
+          <option value="Ecuador">Ecuador</option>
+        </select>
+
+        <label>Dirección de la calle <span>*</span></label>
+        <input type="text" name="direccion" placeholder="Número de la casa y nombre de la calle" required>
+        <input type="text" name="apartamento" placeholder="Apartamento, piso, etc (opcional)">
+
+        <label>Localidad / Ciudad <span>*</span></label>
+        <select name="ciudad" required>
+          <option value="">Seleccione una ciudad...</option>
+          <option value="Bogotá">Bogotá</option>
+          <option value="Medellín">Medellín</option>
+          <option value="Cali">Cali</option>
+          <option value="Barranquilla">Barranquilla</option>
+          <option value="Cartagena">Cartagena</option>
+          <option value="Santa Marta">Santa Marta</option>
+        </select>
+
+        <label>Región / Provincia <span>*</span></label>
+        <select name="region" required>
+          <option value="">Seleccione una región...</option>
+          <option value="Cundinamarca">Cundinamarca</option>
+          <option value="Antioquia">Antioquia</option>
+          <option value="Valle del Cauca">Valle del Cauca</option>
+          <option value="Atlantico">Atlántico</option>
+          <option value="Bolivar">Bolívar</option>
+        </select>
+
+        <label>Código postal <span>*</span></label>
+        <input type="text" name="codigo_postal" placeholder="Ej: 110111" required>
+
+        <label>Teléfono <span>*</span></label>
+        <input type="tel" name="telefono" placeholder="Ej: 3001234567" required>
+
+        <label>Correo electrónico <span>*</span></label>
+        <input type="email" name="email" value="{{ user.email }}" required>
+
+        <!-- ===== PASO 2: CONFIRMACIÓN DE PEDIDO ===== -->
+        <hr style="margin-top: 40px;">
+
+        <h2 style="text-align: center; margin-top: 30px; color: #007bff;">Tu pedido</h2>
+
+        <table style="width: 100%; margin-top: 20px;">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th class="subtotal">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in carrito.items.all %}
+            <tr>
+              <td>{{ item.producto.nombre }}</td>
+              <td>{{ item.cantidad }}</td>
+              <td class="subtotal">${{ item.subtotal|floatformat:0 }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="3" style="text-align: center; padding: 20px;">Tu carrito está vacío</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <hr>
+
+        <table style="width: 100%; margin-top: 20px;">
+          <tr>
+            <td><strong>Subtotal</strong></td>
+            <td class="subtotal"><strong>${{ carrito.total|floatformat:0 }}</strong></td>
+          </tr>
+          <tr>
+            <td><strong style="color:#00a000; font-size: 1.2rem;">TOTAL</strong></td>
+            <td class="total" style="font-size: 1.2rem;"><strong>${{ carrito.total|floatformat:0 }} COP</strong></td>
+          </tr>
+        </table>
+
+        <hr>
+
+        <!-- ===== MÉTODO DE PAGO ===== -->
+        <h3 style="margin-top: 30px; color: #007bff;">Método de pago</h3>
+
+        <div class="payment-option">
+          <label><input type="radio" name="payment" value="transferencia" checked> Transferencia bancaria directa</label>
+          <p class="payment-description">
+            Realiza tu pago directamente en nuestra cuenta bancaria. Usa el número de pedido como referencia. Tu pedido se procesará al confirmar el pago.
+          </p>
+        </div>
+
+        <div class="payment-option contra">
+          <label><input type="radio" name="payment" value="contraentrega"> Contra entrega</label>
+          <p class="payment-description">Paga al recibir tu pedido (aplica solo en zonas seleccionadas)</p>
+        </div>
+
+        <hr>
+
+        <!-- ===== TÉRMINOS ===== -->
+        <p class="privacy-text">
+          Tus datos personales se utilizarán para procesar tu pedido y mejorar tu experiencia. Consulta nuestra 
+          <a href="#">política de privacidad</a>.
+        </p>
+
+        <div class="checkbox" style="margin-top: 20px;">
+          <input type="checkbox" id="terminos" name="terminos" required>
+          <label for="terminos">
+            He leído y acepto los <a href="#">términos y condiciones</a> y confirmo ser mayor de 18 años <span class="required">*</span>
+          </label>
+        </div>
+
+        <!-- ===== BOTONES ===== -->
+        <div style="display: flex; gap: 15px; margin-top: 30px; justify-content: center;">
+          <a href="{% url 'carrito' %}" class="btn-cancel">Volver al carrito</a>
+          <button type="submit" class="btn-order" id="btn-checkout">Realizar pedido</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  {% include 'store/footer.html' %}
+
+</body>
+</html>

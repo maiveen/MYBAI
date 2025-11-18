@@ -1,0 +1,421 @@
+/* ===== CONFIGURACIÓN GENERAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #0d0d0d;
+  color: #f0f0f0;
+  line-height: 1.6;
+}
+
+/* ===== NAVBAR ===== */
+
+.main-nav {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+}
+
+.main-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: #ffffff;
+}
+
+.icons-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icons-right a,
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.icons-right a:hover,
+.icon-btn:hover {
+  color: #007bff;
+}
+
+/* ===== PRODUCTO ===== */
+.product {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+}
+
+.product-images img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.image-gallery {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.image-gallery img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05);
+  border: 2px solid #007bff;
+}
+
+.product-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.product-info h1 {
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.rating {
+  margin: 10px 0;
+  color: gold;
+}
+
+.price {
+  font-size: 1.8rem;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.stock span {
+  color: #00a000;
+}
+
+.product-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+.quantity button {
+  background: none;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.quantity input {
+  width: 40px;
+  text-align: center;
+  background: none;
+  border: none;
+  color: #fff;
+}
+
+.add-cart {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-cart:hover {
+  background-color: #005fcc;
+}
+
+/* ===== FORMULARIO DE FACTURACIÓN ===== */
+.facturacion {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 40px 25px;
+  background-color: #141414;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,123,255,0.15);
+}
+
+.facturacion h2 {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+.col {
+  flex: 1;
+}
+
+label {
+  font-weight: 500;
+  color: #ddd;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: #222;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+input:focus, select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* ===== CONFIRMACIÓN DE PEDIDO ===== */
+.pedido {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px 25px;
+  background-color: #141414;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,123,255,0.15);
+}
+
+.pedido h2 {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+th, td {
+  padding: 12px 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1e1e1e;
+  color: #007bff;
+}
+
+tr:nth-child(even) {
+  background-color: #1a1a1a;
+}
+
+.subtotal, .total {
+  text-align: right;
+}
+
+.payment-option {
+  background-color: #1e1e1e;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  border-left: 4px solid #007bff;
+}
+
+.payment-option label {
+  color: #fff;
+}
+
+.payment-description {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 5px;
+}
+
+.checkbox {
+  margin: 20px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checkbox label {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.checkbox span {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.btn-order {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  margin: 20px auto;
+  transition: 0.3s;
+}
+
+.btn-order:hover {
+  background-color: #005fcc;
+}
+
+/* ===== estilos movidos desde finalizar_compra.html (antes inline) ===== */
+.btn-cancel {
+  background-color: #999;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn-cancel:hover { background-color: #777; }
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.checkbox label { margin: 0; cursor: pointer; }
+.checkbox a { color: #007bff; text-decoration: none; }
+.checkbox a:hover { text-decoration: underline; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+.subtotal { text-align: right; color: #007bff; font-weight: 600; }
+.total { text-align: right; color: #00a000; }
+
+hr { margin: 25px 0; border: none; border-top: 1px solid #ddd; }
+h2 { color: #007bff; }
+h3 { color: #333; }
+
+/* ===== estilos de formulario/inputs (alinear con estilo global) ===== */
+.facturacion .row { display:flex; gap:20px; }
+.facturacion .col { flex:1; }
+.facturacion label { font-weight:500; color: #ddd; margin-top:0.25rem; display:block; }
+.facturacion input, .facturacion select, .facturacion textarea {
+  width:100%; padding:10px; margin-top:5px; border-radius:6px; border:1px solid #333;
+  background-color:#222; color:#fff; transition:0.25s;
+}
+.facturacion input:focus, .facturacion select:focus { border-color:#007bff; outline:none; }
+
+.btn-order {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  margin: 0;
+  transition: 0.3s;
+}
+.btn-order:hover { background-color: #005fcc; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .product-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .product-images img {
+    max-width: 300px;
+  }
+
+  .image-gallery {
+    justify-content: center;
+  }
+
+  .btn-order {
+    width: 100%;
+  }
+
+  .facturacion .row { flex-direction: column; }
+  .btn-order, .btn-cancel { width: 100%; }
+}

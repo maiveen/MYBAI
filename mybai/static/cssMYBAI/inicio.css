@@ -1,0 +1,256 @@
+/* ======== RESET GENERAL ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  background-color: #0a1a2f;
+  line-height: 1.6;
+}
+
+/* Header styles moved to global.css */
+
+/* ======== HERO ======== */
+.hero {
+  background: linear-gradient(rgba(10, 26, 47, 0.85), rgba(10, 26, 47, 0.9)),
+    url("../img/hero-bg.jpeg") center/cover no-repeat;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+
+.hero-inner {
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #dce7f5;
+}
+
+.btn-primary {
+  background: #00b8ff;
+  color: #0a1a2f;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: #007acc;
+  transform: scale(1.05);
+}
+
+/* ======== OFERTAS ======== */
+.productos-destacados {
+  background-color: #f5f7fa;
+  color: #0a1a2f;
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.productos-destacados h2 {
+  color: #0052cc;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.producto {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+}
+
+/* Mejoras: altura fija para cards, control de texto e imagen */
+.producto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px; /* asegura consistencia visual */
+}
+
+.producto h3 {
+  font-size: 1.05rem;
+  margin: 0.8rem 0 0.4rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.producto .price { margin-top: 0.4rem; }
+
+.producto .img-container { flex: 0 0 220px; }
+.producto .img-container img { width: 100%; height: 100%; object-fit: cover; display:block }
+
+.producto .btn-secondary, .producto .btn { margin-top: 12px }
+
+.img-container {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 0.6rem;
+  background: #fff; /* mantener contraste para productos con fondo blanco */
+}
+
+.img-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* mostrar imagen completa sin recortar */
+  display: block;
+}
+
+.price {
+  color: #0052cc;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem;
+}
+
+.btn-secondary {
+  background: #0052cc;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #00b8ff;
+  color: #0a1a2f;
+}
+
+/* ======== CONTACTO ======== */
+.contacto {
+  background: linear-gradient(135deg, #0a1a2f, #001a40);
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card h2 {
+  color: #00b8ff;
+  margin-bottom: 1rem;
+}
+
+.contact-card p {
+  color: #dce7f5;
+  margin-bottom: 1.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+.contact-form button {
+  width: 100%;
+}
+
+/* Footer styles are centralized in global.css to avoid duplication. */
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .main-nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .productos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== Estilos para las alertas SweetAlert2 personalizadas ===== */
+.swal-popup-custom {
+  border-radius: 20px !important;
+  box-shadow: 0 0 20px rgba(0, 200, 83, 0.3);
+  background-color: #fefefe !important;
+  color: #333 !important;
+}
+
+.swal-title-custom {
+  font-weight: 700 !important;
+  font-family: 'Poppins', sans-serif;
+  color: #00c853 !important;
+  font-size: 1.5rem !important;
+}
+
+.swal-confirm-custom {
+  font-weight: 600 !important;
+  border-radius: 30px !important;
+  padding: 10px 25px !important;
+  background-color: #00c853 !important;
+  border: none !important;
+}
+
+.swal-cancel-custom {
+  font-weight: 500 !important;
+  border-radius: 30px !important;
+  padding: 10px 25px !important;
+  background-color: #ccc !important;
+  color: #000 !important;
+}

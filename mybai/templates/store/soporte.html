@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro de Soporte Técnico | MYBAI</title>
+  <link rel="stylesheet" href="{% static 'cssMYBAI/global.css' %}">
+  <link rel="stylesheet" href="{% static 'cssMYBAI/soporte.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  {% include 'store/header.html' %}
+
+  <!-- ===== ENCABEZADO ===== -->
+  <section class="support-header container">
+    <h1>Centro de Soporte Técnico</h1>
+    <p>Estamos aquí para ayudarte con cualquier problema técnico o duda sobre nuestros productos y servicios.</p>
+  </section>
+
+  <!-- ===== SECCIÓN DE SERVICIO ===== -->
+  <section class="support-services container">
+    <div class="support-card">
+      <img src="{% static 'img/computadora.png' %}" alt="icono computadora">
+      <h3>Computadoras</h3>
+      <p>Solución de problemas, actualizaciones y mantenimiento de tu equipo.</p>
+    </div>
+    <div class="support-card">
+      <img src="{% static 'img/laptop3.png' %}" alt="icono laptop">
+      <h3>Laptops</h3>
+      <p>Optimización, instalación de software y revisión técnica especializada.</p>
+    </div>
+    <div class="support-card">
+      <img src="{% static 'img/monitor.png' %}" alt="icono monitor">
+      <h3>Periféricos</h3>
+      <p>Diagnóstico y reparación de monitores, teclados, mice y más.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq container">
+    <h2>Preguntas Frecuentes</h2>
+    <p>Encuentra respuestas rápidas a las preguntas más comunes.</p>
+    <details>
+      <summary>¿Cómo puedo hacer uso de la garantía de mi producto?</summary>
+      <p>Solicita soporte en nuestra sección de garantías adjuntando tu comprobante de compra.</p>
+    </details>
+
+    <details>
+      <summary>¿Ofrecen servicio técnico a domicilio?</summary>
+      <p>Sí, brindamos asistencia técnica a domicilio en zonas seleccionadas. Consulta disponibilidad en tu área.</p>
+    </details>
+
+    <details>
+      <summary>¿Qué hago si mi computadora no enciende?</summary>
+      <p>Verifica la conexión eléctrica y los cables. Si el problema continúa, contáctanos para asistencia técnica.</p>
+    </details>
+
+    <details>
+      <summary>¿Cómo puedo ampliar la memoria RAM de mi equipo?</summary>
+      <p>Pide una evaluación gratuita con nuestro equipo técnico para revisar compatibilidad y opciones.</p>
+    </details>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section class="contacto container">
+    <h2>Contáctanos</h2>
+    <p>Elige la opción que mejor se adapte a tus necesidades.</p>
+
+    <div class="contacto-grid">
+      <div class="contact-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="teléfono">
+        <h3>Soporte Telefónico</h3>
+        <p>Habla con un técnico especializado para resolver tus dudas.</p>
+        <p><strong>📞 +57 300 123 4567</strong><br>Lun–Vie: 9 am - 7 pm | Sáb: 8 am - 2 pm</p>
+      </div>
+
+      <div class="contact-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="email">
+        <h3>Soporte por Email</h3>
+        <p>Envíanos un correo con tu consulta y te responderemos en menos de 24 horas.</p>
+        <a href="mailto:soporte@mybai.com" class="btn btn-secondary">Enviar Email</a>
+      </div>
+
+      <div class="contact-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/565/565547.png" alt="chat">
+        <h3>Chat en línea</h3>
+        <p>Inicia un chat en vivo con nuestro equipo (disponible en horario de atención).</p>
+        <a href="#" class="btn">Iniciar Chat</a>
+      </div>
+    </div>
+  </section>
+
+  {% include 'store/footer.html' %}
+
+</body>
+</html>
